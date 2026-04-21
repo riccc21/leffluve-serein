@@ -330,12 +330,72 @@ nav a:nth-child(2) { animation-delay: 0.4s; }
 }
 
 /* Responsive Adjustments */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    .hero { flex-direction: column; text-align: center; }
-    .hero-content h1 { font-size: 40px; }
-    .hero-image { margin-top: 40px; }
-    .hero-image img { max-width: 100%; }
-    .product-card { flex-direction: column; align-items: center; text-align: center; }
-    .product-info { padding-left: 0; padding-top: 15px; }
-    .scents-section { margin-top: 0; }
+    
+    /* 1. Header & Navigation */
+    header {
+        flex-direction: column; /* Stack logo above nav */
+        padding: 20px 5%;
+        gap: 15px;
+    }
+    
+    nav a {
+        margin: 0 10px; /* Bring links closer together */
+        font-size: 12px;
+    }
+
+    /* 2. Hero Section (Elegance in Every Spray) */
+    .hero {
+        flex-direction: column-reverse; /* Put the bottle above the text on mobile */
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px; /* Shrink title so it fits on one screen */
+        margin: 10px 0;
+    }
+
+    .description {
+        margin: 0 auto 20px auto; /* Center the description */
+        font-size: 14px;
+    }
+
+    .hero-image {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .hero-image img {
+        max-width: 60%; /* Make bottle slightly smaller for mobile */
+    }
+
+    /* 3. Our Scents Grid */
+    .scents-section {
+        padding: 40px 5%;
+        margin-top: 0; /* Remove negative margin on small screens */
+    }
+
+    .scents-grid {
+        grid-template-columns: 1fr; /* Force one scent per row */
+        gap: 20px;
+    }
+
+    .product-card {
+        flex-direction: column; /* Image on top of text */
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-info {
+        padding-left: 0;
+        padding-top: 15px;
+    }
+
+    /* 4. Contact/Footer */
+    .contact-links {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
