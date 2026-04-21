@@ -1,0 +1,341 @@
+:root {
+    --text-gold: #B39567;
+    --text-dark: #3E342B;
+    /* Softened background colors to allow the silk texture to show through */
+    --bg-overlay: rgba(242, 235, 225, 0.7); 
+    --card-bg: rgba(248, 244, 240, 0.9);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+
+    /* BACKGROUND IMAGE INTEGRATION */
+    background-image: url('bgphoto.png.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    background-color: #F2EBE1; 
+}
+
+/* --- OPENING ANIMATION KEYFRAMES --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Applying Opening Animation to Header elements */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.logo-emblem {
+    height: 45px;
+    width: auto;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    margin-left: 30px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Staggering Nav Links */
+nav a:nth-child(1) { animation-delay: 0.3s; }
+nav a:nth-child(2) { animation-delay: 0.4s; }
+
+/* Hero Section - UPDATED SPACING */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 40px 10% 0 10%; 
+    min-height: 60vh; 
+}
+
+.hero-content {
+    flex: 1;
+}
+
+/* Applying Staggered Entrance to Hero Content */
+.subtitle {
+    color: var(--text-gold);
+    letter-spacing: 4px;
+    font-size: 13px;
+    display: block;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 400;
+    margin: 20px 0;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.description {
+    max-width: 400px;
+    margin-bottom: 30px;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 1s;
+}
+
+.btn-primary {
+    background-color: var(--text-gold);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.btn-primary:hover {
+    background-color: #8f7752;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: right;
+    opacity: 0;
+    animation: fadeInRight 1.2s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-image img {
+    max-width: 70%;
+    filter: drop-shadow(20px 20px 40px rgba(0,0,0,0.1));
+    /* Luxury Floating Effect */
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Our Scents Section - UPDATED TO PULL ABOVE */
+.scents-section {
+    padding: 20px 10% 60px 10%; 
+    background-color: var(--bg-overlay);
+    margin-top: -30px; 
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px; 
+}
+
+.section-title hr {
+    flex: 1;
+    border: 0.5px solid var(--text-gold);
+    max-width: 100px;
+    margin: 0 20px;
+}
+
+.section-title span {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+}
+
+.scents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- AUTOMATIC HOVER OVERLAY CODE --- */
+.product-card {
+    background: var(--card-bg);
+    position: relative; 
+    overflow: hidden;   
+    display: flex;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    border: 1px solid rgba(179, 149, 103, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-img img {
+    width: 120px;
+    height: auto;
+}
+
+.product-info {
+    padding-left: 20px;
+}
+
+.inspired {
+    color: var(--text-gold);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+/* The Hover Overlay */
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(62, 52, 43, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    box-sizing: border-box;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease-in-out;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay-content h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-gold);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.overlay-content p {
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Footer / Contact */
+.contact-section {
+    padding: 50px 10%;
+    text-align: center;
+    background-color: rgba(242, 235, 225, 0.9);
+    border-top: 1px solid rgba(179, 149, 103, 0.3);
+}
+
+.contact-section h2 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 3px;
+}
+
+.footer-line {
+    width: 50px;
+    height: 1px;
+    background: var(--text-gold);
+    margin: 20px auto;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.contact-item i { color: var(--text-gold); }
+
+.contact-item a {
+    text-decoration: none; 
+    color: inherit;       
+    transition: 0.3s;     
+}
+
+.contact-item a:hover {
+    color: var(--text-gold); 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero { flex-direction: column; text-align: center; }
+    .hero-content h1 { font-size: 40px; }
+    .hero-image { margin-top: 40px; }
+    .hero-image img { max-width: 100%; }
+    .product-card { flex-direction: column; align-items: center; text-align: center; }
+    .product-info { padding-left: 0; padding-top: 15px; }
+    .scents-section { margin-top: 0; }
+}
